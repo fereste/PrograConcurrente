@@ -11,7 +11,7 @@
             // new ThreadPoolLimit().Run();
             //Pipes.RunServer();
             //Pipes.RunClient();
-            new Lock().Run().Wait();
+            // new Lock().Run().Wait();
 
             Console.WriteLine("Listo");
             Console.ReadLine();
