@@ -12,6 +12,7 @@
             //Pipes.RunServer();
             //Pipes.RunClient();
             // new Lock().Run().Wait();
+            // no correr - Sincronizacion
 
             Console.WriteLine("Listo");
             Console.ReadLine();
