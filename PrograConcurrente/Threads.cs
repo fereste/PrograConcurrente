@@ -17,30 +17,31 @@ namespace PrograConcurrente
 
             Console.WriteLine("Soy el hilo principal");
 
-            Thread thread1 = new Thread(TrabajoThread1); // { IsBackground = true };
+            Thread thread1 = new Thread(TrabajoThread1);
             Thread thread2 = new Thread(TrabajoThread2);
 
+            thread1.IsBackground = false;
             thread1.Start();
             thread2.Start(DateTime.Now.ToShortTimeString());
 
-            Console.WriteLine($"Esperando hilo 1 ({thread1.ManagedThreadId})");
-            thread1.Join();
+            //Console.WriteLine($"Esperando hilo 1 ({thread1.ManagedThreadId})");
+            // thread1.Join();
 
-            Console.WriteLine($"Esperando hilo 2 ({thread1.ManagedThreadId})");
+            Console.WriteLine($"Esperando hilo 2 ({thread2.ManagedThreadId})");
             thread2.Join();
         }
 
         private void TrabajoThread1()
         {
             Console.WriteLine($"Soy el hilo {Environment.CurrentManagedThreadId}");
-            Thread.Sleep(1000);
+            Thread.Sleep(10000);
         }
 
         private void TrabajoThread2(object args)
         {
             string param1 = (string)args;
             Console.WriteLine($"Soy el hilo {Environment.CurrentManagedThreadId} con el parámetro {param1}");
-            Thread.Sleep(1500);
+            Thread.Sleep(1000);
         }
     }
 }

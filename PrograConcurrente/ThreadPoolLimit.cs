@@ -16,12 +16,15 @@ namespace PrograConcurrente
 
         public void Run()
         {
-            Console.WriteLine($"Tamaño ThreadPool -> {ThreadPool.ThreadCount}");
-            
-            Parallel.Invoke(Enumerable.Repeat(Trabajo, 10).ToArray());
+            ThreadPool.GetAvailableThreads(out int workerThreads, out int completion);
+            Console.WriteLine($"worker: {workerThreads}, completion: {completion}");
 
-            //ParallelOptions options = new ParallelOptions { MaxDegreeOfParallelism = 2 };
-            //Parallel.Invoke(options, Enumerable.Repeat(Trabajo, 10).ToArray());
+            Console.WriteLine($"Tamaño ThreadPool -> {ThreadPool.ThreadCount}");
+
+            //Parallel.Invoke(Enumerable.Repeat(Trabajo, 10).ToArray());
+
+            ParallelOptions options = new ParallelOptions { MaxDegreeOfParallelism = 2 };
+            Parallel.Invoke(options, Enumerable.Repeat(Trabajo, 10).ToArray());
         }
     }
 }

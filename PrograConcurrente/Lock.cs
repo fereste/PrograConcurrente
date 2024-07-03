@@ -20,14 +20,17 @@ namespace PrograConcurrente
             Task t3 = Task.Factory.StartNew(Trabajo);
             Task t4 = Task.Factory.StartNew(Trabajo);
 
-            await Task.WhenAll(t1, t2, t3, t4);   
+            await Task.WhenAll(t1, t2, t3, t4);
 
             Console.WriteLine(recursoCompartido);
         }
 
         private void Trabajo()
         {
-            recursoCompartido++;
+            lock (LockObject)
+            {
+                recursoCompartido++;
+            }
         }
     }
 }

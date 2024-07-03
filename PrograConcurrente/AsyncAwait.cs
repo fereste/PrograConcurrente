@@ -15,6 +15,9 @@ namespace PrograConcurrente
         {
             Console.WriteLine($"a -> {a}");
             await RunSomeTaskAsync();
+            
+            //Task task = RunSomeTaskAsync();
+            //await task;
             Console.WriteLine($"a -> {a}");
 
             int result = await AddValuesAsync(1, 2, 3 ,4);
